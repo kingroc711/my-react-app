@@ -13,6 +13,7 @@ export default function UserList() {
     { name: "张三", age: 20, address: { city: "北京", zip: "100000" } },
     { name: "李四", age: 25, address: { city: "上海", zip: "200000" } },
     { name: "王五", age: 30, address: { city: "广州", zip: "510000" } },
+    { name: "赵六", age: 35, address: { city: "大连", zip: "710000" } },
   ]);
 
   // 更新年龄
