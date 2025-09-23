@@ -1,9 +1,9 @@
-import UserList from "./UserList";
+import StockGrid from "./StockGrid";
 
 function App() {
   return (
     <div>
-      <UserList />
+      <StockGrid />
     </div>
   );
 }
