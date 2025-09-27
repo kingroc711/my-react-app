@@ -1,8 +1,8 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+// vite.config.ts
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
 
-// https://vite.dev/config/
 export default defineConfig({
-  base: '/my-react-app/',
   plugins: [react()],
-})
+  base: "/my-react-app/",  // 👈 这里写 GitHub 仓库名
+});
