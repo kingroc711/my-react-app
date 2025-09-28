@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import styles from "./StockGrid.module.css";
+import styles from "../styles/StockGrid.module.css";
 
 type Stock = {
   symbol: string;

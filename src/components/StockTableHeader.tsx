@@ -1,4 +1,4 @@
-import styles from "./StockGrid.module.css";
+import styles from "../styles/StockGrid.module.css";
 
 type Props = {
   sortBy: "symbol" | "price" | "change";

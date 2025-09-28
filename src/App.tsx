@@ -1,6 +1,6 @@
 import { HashRouter, Routes, Route } from "react-router-dom";
-import StockGrid from "./StockGrid";
-import StockDetail from "./StockDetail";
+import StockGrid from "./pages/StockGrid";
+import StockDetail from "./pages/StockDetail";
 
 function App() {
   return (

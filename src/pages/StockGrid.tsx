@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import StockFilter from "./StockFilter";
-import StockTableHeader from "./StockTableHeader";
-import StockTableRow from "./StockTableRow";
+import StockFilter from "../components/StockFilter";
+import StockTableHeader from "../components/StockTableHeader";
+import StockTableRow from "../components/StockTableRow";
 
 type Stock = {
   symbol: string;
