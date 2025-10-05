@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import StockFilter from "../components/StockFilter";
 import StockTableHeader from "../components/StockTableHeader";
 import StockTableRow from "../components/StockTableRow";
+import StockNoteModal from "../components/StockNoteModal"; // 👈 新增
 
 type Stock = {
   symbol: string;
@@ -20,6 +21,10 @@ function StockGrid() {
   // 表单状态
   const [keyword, setKeyword] = useState("");
   const [filter, setFilter] = useState("all");
+
+  // 新增：备注相关状态
+  const [selectedSymbol, setSelectedSymbol] = useState<string | null>(null);
+  const [notes, setNotes] = useState<Record<string, string>>({});
 
   const API_KEY = "d39bdqpr01ql85dh1ms0d39bdqpr01ql85dh1msg";
 
@@ -73,6 +78,14 @@ function StockGrid() {
     }
   };
 
+  // 👇 新增：保存备注的函数
+  const handleSaveNote = (note: string) => {
+    if (selectedSymbol) {
+      setNotes((prev) => ({ ...prev, [selectedSymbol]: note }));
+    }
+    setSelectedSymbol(null); // 关闭弹窗
+  };
+
   return (
     <div style={{ padding: "20px" }}>
       <h2>美股实时行情</h2>
@@ -91,9 +104,42 @@ function StockGrid() {
 
       {/* 行数据 */}
       {filteredStocks.length > 0 ? (
-        filteredStocks.map((s) => <StockTableRow key={s.symbol} stock={s} />)
+        filteredStocks.map((s) => (
+          <div key={s.symbol} style={{ display: "flex", alignItems: "center" }}>
+            <StockTableRow stock={s} />
+            <button
+              style={{ marginLeft: "10px" }}
+              onClick={() => setSelectedSymbol(s.symbol)}
+            >
+              添加备注
+            </button>
+          </div>
+        ))
       ) : (
         <p>无匹配股票</p>
+      )}
+
+      {/* 👇 新增：备注展示 */}
+      {Object.keys(notes).length > 0 && (
+        <div style={{ marginTop: "20px" }}>
+          <h3>我的备注：</h3>
+          <ul>
+            {Object.entries(notes).map(([sym, note]) => (
+              <li key={sym}>
+                <strong>{sym}：</strong> {note}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {/* 👇 弹出输入窗口 */}
+      {selectedSymbol && (
+        <StockNoteModal
+          symbol={selectedSymbol}
+          onOk={handleSaveNote}
+          onCancel={() => setSelectedSymbol(null)}
+        />
       )}
     </div>
   );
