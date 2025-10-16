@@ -4,7 +4,7 @@ import StockGrid from "./pages/StockGrid";
 import StockDetail from "./pages/StockDetail";
 import ModalDemo from "./pages/ModalDemo.tsx";       // 新增课题示例
 import FormDemo from "./pages/FormDemo";         // 新增课题示例
-import CheckboxPage from "./pages/CheckboxPage"; // 新增课题示例
+import CheckboxContainer from "./pages/CheckBox/CheckboxContainer.tsx"; // 新增课题示例
 
 import { StockProvider } from "./contexts/StockContext";
 
@@ -27,7 +27,8 @@ function App() {
           <Route path="/form-demo" element={<FormDemo />} />
           
           {/* 课题4：复选框示例 */}
-          <Route path="/checkbox-demo" element={<CheckboxPage />} />
+          <Route path="/checkbox-demo" element={<CheckboxContainer />} />
+        
         </Routes>
       </HashRouter>
     </StockProvider>

@@ -1,10 +1,10 @@
-// pages/CheckboxPage.tsx
-import React, { useState } from "react";
-import { useCheckboxGroup } from "../hooks/useCheckboxGroup";
-import DatePicker from "../components/DatePicker";
+// pages/Checkbox/CheckboxContainer.tsx
+import React from "react";
+import DatePicker from "../../components/DatePicker";
+import { useCheckboxGroup } from "../../hooks/useCheckboxGroup";
 
-const CheckboxPage: React.FC = () => {
-  // ✅ checkbox 逻辑封装
+const CheckboxContainer: React.FC = () => {
+ // ✅ checkbox 逻辑封装
   const {
     fruitOptions,
     selectedFruits,
@@ -20,21 +20,23 @@ const CheckboxPage: React.FC = () => {
     setIsDiscount,
     selectedDate,
     setSelectedDate,
-    handleGetDate,
-    handleClearDate
+    handleGetDate
   } = useCheckboxGroup();
+
+  const onDateChange = (d: string | null) => setSelectedDate(d);
+  const onGetDate = () => handleGetDate();
+  const onClearDate = () => setSelectedDate(null);
 
   return (
     <div style={{ padding: "20px", fontFamily: "sans-serif" }}>
-      <h2>Checkbox 示例 + 日历组件</h2>
+      <h2>Checkbox 示例（Container + View 分层）</h2>
 
       {/* ✅ 日历组件 */}
-      <DatePicker value={selectedDate} onChange={setSelectedDate} />
+      <DatePicker value={selectedDate} onChange={onDateChange} />
 
-      {/* ✅ 日期按钮 */}
       <div style={{ marginBottom: "20px" }}>
-        <button onClick={handleGetDate}>获取日期</button>
-        <button onClick={handleClearDate} style={{ marginLeft: "8px" }}>
+        <button onClick={onGetDate}>获取日期</button>
+        <button onClick={onClearDate} style={{ marginLeft: "8px" }}>
           清空日期
         </button>
       </div>
@@ -111,4 +113,4 @@ const CheckboxPage: React.FC = () => {
   );
 };
 
-export default CheckboxPage;
+export default CheckboxContainer;

@@ -8,14 +8,14 @@ export function useCheckboxGroup() {
 
   const selectAllFruits = () => setSelectedFruits(fruitOptions);
   const clearAllFruits = () => setSelectedFruits([]);
-
+  
    // ✅ 日历状态
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
 
   // ✅ 性别 checkbox 状态
   const [isMale, setIsMale] = useState(false);
   const [isFemale, setIsFemale] = useState(false);
-
+  
    // ✅ 打折 checkbox 状态
   const [isDiscount, setIsDiscount] = useState(true);
 
@@ -32,7 +32,7 @@ export function useCheckboxGroup() {
     }
   };
 
-  // ✅ 获取日期
+    // ✅ 获取日期
   const handleGetDate = () => {
     if (selectedDate) {
       alert(`当前选择的日期是：${selectedDate}`);
@@ -41,12 +41,6 @@ export function useCheckboxGroup() {
     }
   };
 
-  // ✅ 清空日期
-  const handleClearDate = () => setSelectedDate(null);
-
- 
-
-  // ✅ 返回所有状态和操作函数
   return {
     fruitOptions,
     selectedFruits,
@@ -62,7 +56,6 @@ export function useCheckboxGroup() {
     setIsDiscount,
     selectedDate,
     setSelectedDate,
-    handleGetDate,
-    handleClearDate
+    handleGetDate
   };
 }
